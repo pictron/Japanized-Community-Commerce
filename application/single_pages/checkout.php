@@ -238,7 +238,29 @@ $csm = $app->make('cs/helper/multilingual');
                             </div>
                             <div class="col-sm-6">
                                 <label><?= t('Address'); ?></label>
-                                <p class="store-summary-address"><?= nl2br($customer->getAddress('billing_address')); ?></p>
+                                <p class="store-summary-address-jp">
+                                <?php if(!$customer->getAddress('billing_address')){ ?>
+                                <script type="text/javascript">
+                                    $('#store-checkout-form-group-billing').submit(function() {
+                                    $('.store-summary-address2').html($('#store-checkout-billing-zip').val()+'<br>');
+                                    $('.store-summary-address2').html($('.store-summary-address2').html() + $('[name=store-checkout-billing-state] option:selected').text()+'<br>');
+                                    $('.store-summary-address2').html($('.store-summary-address2').html() + $('#store-checkout-billing-city').val()+'<br>');
+                                    $('.store-summary-address2').html($('.store-summary-address2').html() + $('#store-checkout-billing-address-1').val()+'<br>');
+                                    $('.store-summary-address2').html($('.store-summary-address2').html() + $('#store-checkout-billing-address-2').val()+'<br>');
+                                    });
+                                </script>
+                                <?php }else{ ?>
+                                <?php    
+                                $sh = Loader::helper('lists/states_provinces');
+                                $billingState = $customer->getAddressValue('billing_address', 'state_province');
+                                echo $customer->getAddressValue('billing_address', 'postal_code').'<br>';
+                                echo $sh->getStateProvinceName($billingState,'JP').'<br>';
+                                echo $customer->getAddressValue('billing_address', 'city').'<br>';
+                                echo $customer->getAddressValue('billing_address', 'address1');
+                                echo $customer->getAddressValue('billing_address', 'address2');
+                                ?>
+                                <?php } ?>
+                                </p>
 
                                 <label><?= t('Phone'); ?></label>
                                 <p class="store-summary-phone"><?= $customer->getValue('billing_phone'); ?></p>
