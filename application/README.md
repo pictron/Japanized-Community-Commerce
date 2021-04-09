@@ -6,3 +6,7 @@ application/のオーバーライトするファイルを共有します。
 https://github.com/concrete5-community-store
 
 ### 住所の表記を、国、郵便番号、都道府県、市町村、住所１、住所2の変更
+
+/application/attributes/address/form.php
+
+### 決済画面の姓名を逆に
