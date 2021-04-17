@@ -34,3 +34,7 @@ https://github.com/concrete5-community-store
 姓名を逆に変更
 
 /application/single_pages/dashboard/store/orders.php
+
+### stripeのウインドウ内の表示桁数を変更
+
+/application/elements/stripe/stripe_button.php
