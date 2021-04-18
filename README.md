@@ -37,4 +37,7 @@ https://github.com/concrete5-community-store
 
 ### stripeのウインドウ内の表示桁数を変更
 
+Stripe決済プラグインのモダールで表示されている金額の桁数の変更
+https://github.com/concrete5-community-store/community_store_stripe
+
 /application/elements/stripe/stripe_button.php
